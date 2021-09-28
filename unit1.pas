@@ -97,7 +97,11 @@ end;
 
 procedure TForm1.mnuConfigClick(Sender: TObject);
 begin
-  deetsForm.ShowModal();
+  try
+    deetsForm.ShowModal();
+  finally
+    deetsForm.Free;
+  end;
   (* Reload credentials *)
   loadConfig;
 end;
