@@ -63,23 +63,29 @@ var
   RootNode, dehashedNode: TDOMNode;
   Doc: TXMLDocument;
 begin
-  try
-    dfileName := 'nergalConf.xml';
-    (* Read in xml file from disk *)
-    ReadXMLFile(Doc, dfileName);
-    (* Retrieve the hunter node *)
-    RootNode := Doc.DocumentElement.FindNode('hunter');
-    (* Retrieve the Hunter API *)
-    hunterAPIfield.Caption := UTF8Encode(RootNode.FindNode('HUNTERAPI').TextContent);
-    (* Retrieve the dehashed nodes *)
-    dehashedNode := Doc.DocumentElement.FindNode('dehashed');
-    (* Retrieve the Dehashed Email address *)
-    dehashedEmailfield.Caption := UTF8Encode(dehashedNode.FindNode('DEHASHEDEMAIL').TextContent);
-    (* Retrieve the Dehashed API *)
-    dehashedAPIfield.Caption := UTF8Encode(dehashedNode.FindNode('DEHASHEDAPI').TextContent);
-  finally
-    (* free memory *)
-    Doc.Free;
+  (* Check to see if a config file exists *)
+  if (FileExists('nergalConf.xml') = True) then
+  begin
+    try
+      dfileName := 'nergalConf.xml';
+      (* Read in xml file from disk *)
+      ReadXMLFile(Doc, dfileName);
+      (* Retrieve the hunter node *)
+      RootNode := Doc.DocumentElement.FindNode('hunter');
+      (* Retrieve the Hunter API *)
+      hunterAPIfield.Caption := UTF8Encode(RootNode.FindNode('HUNTERAPI').TextContent);
+      (* Retrieve the dehashed nodes *)
+      dehashedNode := Doc.DocumentElement.FindNode('dehashed');
+      (* Retrieve the Dehashed Email address *)
+      dehashedEmailfield.Caption :=
+        UTF8Encode(dehashedNode.FindNode('DEHASHEDEMAIL').TextContent);
+      (* Retrieve the Dehashed API *)
+      dehashedAPIfield.Caption :=
+        UTF8Encode(dehashedNode.FindNode('DEHASHEDAPI').TextContent);
+    finally
+      (* free memory *)
+      Doc.Free;
+    end;
   end;
 end;
 
