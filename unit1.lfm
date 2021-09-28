@@ -1,0 +1,165 @@
+object Form1: TForm1
+  Left = 366
+  Height = 667
+  Top = 25
+  Width = 635
+  Caption = 'Nergal'
+  ClientHeight = 646
+  ClientWidth = 635
+  Menu = MainMenu1
+  OnShow = FormShow
+  LCLVersion = '2.1.0.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 646
+    Top = 0
+    Width = 635
+    ActivePage = DeHashed
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object DeHashed: TTabSheet
+      Caption = 'DeHashed'
+      ClientHeight = 611
+      ClientWidth = 629
+      object DomainCaption: TLabel
+        Left = 9
+        Height = 17
+        Top = 15
+        Width = 110
+        Caption = 'Enter domain name'
+        Font.Quality = fqAntialiased
+        ParentColor = False
+        ParentFont = False
+      end
+      object domainEdt: TEdit
+        Left = 9
+        Height = 26
+        Top = 40
+        Width = 296
+        TabOrder = 0
+        TextHint = 'example.com'
+      end
+      object dehashedBtn: TButton
+        Left = 312
+        Height = 25
+        Top = 40
+        Width = 208
+        Caption = 'Search for compromised emails'
+        OnClick = dehashedBtnClick
+        TabOrder = 1
+      end
+      object dehashedResults: TMemo
+        Left = 0
+        Height = 506
+        Top = 105
+        Width = 629
+        Align = alBottom
+        Lines.Strings = (
+          'Nergal uses results from DeHashed.com'
+          'DeHashed provides a list of email addresses that have had their credentials leaked.'
+          ''
+          'Enter the domain name above (without the http:// prefix)'
+          'and click ''Search for compromised emails'''
+          ''
+          'The list of results can be exported to a text file.'
+        )
+        ParentShowHint = False
+        ScrollBars = ssAutoVertical
+        TabOrder = 2
+      end
+      object exportBtn: TButton
+        Left = 312
+        Height = 25
+        Top = 72
+        Width = 208
+        Caption = 'Export results to text file'
+        OnClick = exportBtnClick
+        TabOrder = 3
+        Visible = False
+      end
+    end
+    object Hunter: TTabSheet
+      Caption = 'Hunter'
+      ClientHeight = 611
+      ClientWidth = 629
+      object DomainCaption2: TLabel
+        Left = 9
+        Height = 17
+        Top = 15
+        Width = 110
+        Caption = 'Enter domain name'
+        ParentColor = False
+      end
+      object domainEdt2: TEdit
+        Left = 9
+        Height = 26
+        Top = 40
+        Width = 296
+        TabOrder = 0
+        TextHint = 'example.com'
+      end
+      object hunterBtn: TButton
+        Left = 312
+        Height = 25
+        Top = 40
+        Width = 208
+        Caption = 'Enumerate emails'
+        OnClick = hunterBtnClick
+        TabOrder = 1
+      end
+      object hunterResults: TMemo
+        Left = 0
+        Height = 506
+        Top = 105
+        Width = 629
+        Align = alBottom
+        Lines.Strings = (
+          'Nergal uses results from Hunter.io'
+          'Hunter.io is an email hunter tool that finds email addresses associated with a domain name.'
+          ''
+          'You can obtain a free API key at https://hunter.io/api'
+          ''
+          'Enter the domain name above (without the http:// prefix)'
+          'and click ''Enumerate emails'''
+          ''
+          'The list of results can be exported to a text file.'
+        )
+        ScrollBars = ssAutoVertical
+        TabOrder = 2
+      end
+      object exportBtn2: TButton
+        Left = 312
+        Height = 25
+        Top = 72
+        Width = 211
+        Caption = 'Export results to text file'
+        OnClick = exportBtn2Click
+        TabOrder = 3
+        Visible = False
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 222
+    Top = 7
+    object MenuItem1: TMenuItem
+      Caption = 'Options'
+      object mnuConfig: TMenuItem
+        Caption = 'Config'
+        Hint = 'Load configuration file'
+        OnClick = mnuConfigClick
+      end
+      object mnuQuit: TMenuItem
+        Caption = 'Quit'
+        Hint = 'Quit Nergal'
+        OnClick = mnuQuitClick
+      end
+    end
+    object mnuAbout: TMenuItem
+      Caption = 'About'
+      Hint = 'About Nergal'
+      OnClick = mnuAboutClick
+    end
+  end
+end

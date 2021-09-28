@@ -1,0 +1,88 @@
+object deetsForm: TdeetsForm
+  Left = 479
+  Height = 420
+  Top = 144
+  Width = 439
+  Caption = 'deetsForm'
+  ClientHeight = 420
+  ClientWidth = 439
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '2.1.0.0'
+  object logo: TImage
+    Left = 192
+    Height = 64
+    Top = 48
+    Width = 64
+  end
+  object title: TLabel
+    Left = 0
+    Height = 395
+    Top = 0
+    Width = 439
+    Align = alClient
+    Alignment = taCenter
+    Caption = 'Nergal'
+    Font.Height = -16
+    Font.Quality = fqAntialiased
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object hunterCaption: TLabel
+    Left = 54
+    Height = 17
+    Top = 148
+    Width = 145
+    Caption = 'Enter API key for hunter.io'
+    ParentColor = False
+  end
+  object hunterAPIfield: TEdit
+    Left = 54
+    Height = 26
+    Top = 168
+    Width = 354
+    TabOrder = 0
+  end
+  object dehashedCaption: TLabel
+    Left = 54
+    Height = 17
+    Top = 246
+    Width = 189
+    Caption = 'Enter email address for dehashed'
+    ParentColor = False
+  end
+  object dehashedEmailfield: TEdit
+    Left = 54
+    Height = 26
+    Top = 264
+    Width = 354
+    TabOrder = 1
+  end
+  object dehashedCaption2: TLabel
+    Left = 54
+    Height = 17
+    Top = 320
+    Width = 151
+    Caption = 'Enter API key for dehashed'
+    ParentColor = False
+  end
+  object dehashedAPIfield: TEdit
+    Left = 54
+    Height = 26
+    Top = 344
+    Width = 354
+    TabOrder = 2
+  end
+  object savebtn: TButton
+    Left = 0
+    Height = 25
+    Top = 395
+    Width = 439
+    Align = alBottom
+    Caption = 'Save and continue'
+    OnClick = savebtnClick
+    TabOrder = 3
+  end
+end
