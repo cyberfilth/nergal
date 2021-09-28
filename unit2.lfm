@@ -6,7 +6,6 @@ object deetsForm: TdeetsForm
   Caption = 'deetsForm'
   ClientHeight = 420
   ClientWidth = 439
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.1.0.0'

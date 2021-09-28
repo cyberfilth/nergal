@@ -100,14 +100,15 @@ begin
   try
     deetsForm.ShowModal();
   finally
-    deetsForm.Free;
+    (* Reload credentials *)
+    loadConfig;
   end;
-  (* Reload credentials *)
-  loadConfig;
+
 end;
 
 procedure TForm1.mnuQuitClick(Sender: TObject);
 begin
+  unit2.logoImage.Free;
   Close;
 end;
 

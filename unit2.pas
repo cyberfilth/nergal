@@ -24,7 +24,6 @@ type
     dehashedCaption2: TLabel;
     logo: TImage;
     title: TLabel;
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure savebtnClick(Sender: TObject);
@@ -50,11 +49,6 @@ begin
   logoImage := TBitmap.Create;
   logoImage.LoadFromResourceName(HINSTANCE, 'LOGO');
   logo.Picture.Bitmap.Assign(logoImage);
-end;
-
-procedure TdeetsForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-  logoImage.Free;
 end;
 
 procedure TdeetsForm.FormShow(Sender: TObject);
@@ -155,7 +149,7 @@ begin
     { free memory }
     Doc.Free;
   end;
-  deetsForm.Close;
+  Close;
 end;
 
 end.
