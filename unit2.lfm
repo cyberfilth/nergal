@@ -8,6 +8,7 @@ object deetsForm: TdeetsForm
   ClientWidth = 439
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object title: TLabel
     Left = 0

@@ -23,6 +23,8 @@ type
     DomainCaption: TLabel;
     domainEdt: TEdit;
     DomainCaption2: TLabel;
+    titleDeHashed: TLabel;
+    titleHunter: TLabel;
     MainMenu1: TMainMenu;
     dehashedResults: TMemo;
     hunterResults: TMemo;

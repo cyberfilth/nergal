@@ -8,6 +8,7 @@ object Form1: TForm1
   ClientWidth = 635
   Menu = MainMenu1
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object PageControl1: TPageControl
     Left = 0
@@ -78,6 +79,19 @@ object Form1: TForm1
         TabOrder = 3
         Visible = False
       end
+      object titleDeHashed: TLabel
+        Left = 312
+        Height = 18
+        Top = 8
+        Width = 125
+        Caption = 'Query DeHashed API'
+        Font.Color = clActiveCaption
+        Font.Height = -13
+        Font.Quality = fqAntialiased
+        Font.Style = [fsBold, fsItalic]
+        ParentColor = False
+        ParentFont = False
+      end
     end
     object Hunter: TTabSheet
       Caption = 'Hunter'
@@ -137,6 +151,19 @@ object Form1: TForm1
         OnClick = exportBtn2Click
         TabOrder = 3
         Visible = False
+      end
+      object titleHunter: TLabel
+        Left = 312
+        Height = 18
+        Top = 8
+        Width = 121
+        Caption = 'Query Hunter.io API'
+        Font.Color = clActiveCaption
+        Font.Height = -13
+        Font.Quality = fqAntialiased
+        Font.Style = [fsBold, fsItalic]
+        ParentColor = False
+        ParentFont = False
       end
     end
   end
