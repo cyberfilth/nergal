@@ -108,7 +108,6 @@ end;
 
 procedure TForm1.mnuQuitClick(Sender: TObject);
 begin
-  unit2.logoImage.Free;
   Close;
 end;
 

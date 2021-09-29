@@ -7,7 +7,7 @@ unit Unit2;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls,
   StdCtrls, DOM, XMLWrite, XMLRead;
 
 type
@@ -15,6 +15,8 @@ type
   { TdeetsForm }
 
   TdeetsForm = class(TForm)
+    Bevel1: TBevel;
+    Label1: TLabel;
     savebtn: TButton;
     dehashedEmailfield: TEdit;
     dehashedAPIfield: TEdit;
@@ -22,7 +24,6 @@ type
     hunterCaption: TLabel;
     dehashedCaption: TLabel;
     dehashedCaption2: TLabel;
-    logo: TImage;
     title: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -35,7 +36,6 @@ type
 
 var
   deetsForm: TdeetsForm;
-  logoImage: TBitmap;
 
 implementation
 
@@ -46,9 +46,6 @@ implementation
 procedure TdeetsForm.FormCreate(Sender: TObject);
 begin
   deetsForm.Caption := 'Enter your credentials';
-  logoImage := TBitmap.Create;
-  logoImage.LoadFromResourceName(HINSTANCE, 'LOGO');
-  logo.Picture.Bitmap.Assign(logoImage);
 end;
 
 procedure TdeetsForm.FormShow(Sender: TObject);

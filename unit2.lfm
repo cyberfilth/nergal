@@ -9,12 +9,6 @@ object deetsForm: TdeetsForm
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.1.0.0'
-  object logo: TImage
-    Left = 192
-    Height = 64
-    Top = 48
-    Width = 64
-  end
   object title: TLabel
     Left = 0
     Height = 395
@@ -83,5 +77,20 @@ object deetsForm: TdeetsForm
     Caption = 'Save and continue'
     OnClick = savebtnClick
     TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 46
+    Height = 17
+    Top = 66
+    Width = 360
+    Caption = 'Enter your credentials here, they will be stored in nergalConf.xml'
+    ParentColor = False
+  end
+  object Bevel1: TBevel
+    Left = 56
+    Height = 3
+    Top = 216
+    Width = 354
+    Shape = bsBottomLine
   end
 end
