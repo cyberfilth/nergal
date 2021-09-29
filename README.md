@@ -1,4 +1,5 @@
 # nergal
+![nergal Logo](logo.bmp)
 GUI client for DeHashed and Hunter.io API's
 
 
