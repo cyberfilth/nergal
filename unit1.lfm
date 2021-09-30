@@ -1,18 +1,19 @@
 object Form1: TForm1
-  Left = 366
+  Left = 540
   Height = 667
-  Top = 25
+  Top = 135
   Width = 635
   Caption = 'Nergal'
-  ClientHeight = 646
+  ClientHeight = 667
   ClientWidth = 635
   Menu = MainMenu1
+  OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.0.12.0'
   object PageControl1: TPageControl
     Left = 0
-    Height = 646
+    Height = 667
     Top = 0
     Width = 635
     ActivePage = DeHashed
@@ -21,13 +22,13 @@ object Form1: TForm1
     TabOrder = 0
     object DeHashed: TTabSheet
       Caption = 'DeHashed'
-      ClientHeight = 611
+      ClientHeight = 637
       ClientWidth = 629
       object DomainCaption: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 15
-        Width = 110
+        Width = 117
         Caption = 'Enter domain name'
         Font.Quality = fqAntialiased
         ParentColor = False
@@ -35,7 +36,7 @@ object Form1: TForm1
       end
       object domainEdt: TEdit
         Left = 9
-        Height = 26
+        Height = 22
         Top = 40
         Width = 296
         TabOrder = 0
@@ -53,7 +54,7 @@ object Form1: TForm1
       object dehashedResults: TMemo
         Left = 0
         Height = 506
-        Top = 105
+        Top = 131
         Width = 629
         Align = alBottom
         Lines.Strings = (
@@ -81,9 +82,9 @@ object Form1: TForm1
       end
       object titleDeHashed: TLabel
         Left = 312
-        Height = 18
+        Height = 16
         Top = 8
-        Width = 125
+        Width = 135
         Caption = 'Query DeHashed API'
         Font.Color = clActiveCaption
         Font.Height = -13
@@ -95,19 +96,19 @@ object Form1: TForm1
     end
     object Hunter: TTabSheet
       Caption = 'Hunter'
-      ClientHeight = 611
+      ClientHeight = 637
       ClientWidth = 629
       object DomainCaption2: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 15
-        Width = 110
+        Width = 117
         Caption = 'Enter domain name'
         ParentColor = False
       end
       object domainEdt2: TEdit
         Left = 9
-        Height = 26
+        Height = 22
         Top = 40
         Width = 296
         TabOrder = 0
@@ -125,7 +126,7 @@ object Form1: TForm1
       object hunterResults: TMemo
         Left = 0
         Height = 506
-        Top = 105
+        Top = 131
         Width = 629
         Align = alBottom
         Lines.Strings = (
@@ -154,9 +155,9 @@ object Form1: TForm1
       end
       object titleHunter: TLabel
         Left = 312
-        Height = 18
+        Height = 16
         Top = 8
-        Width = 121
+        Width = 128
         Caption = 'Query Hunter.io API'
         Font.Color = clActiveCaption
         Font.Height = -13
@@ -188,5 +189,11 @@ object Form1: TForm1
       Hint = 'About Nergal'
       OnClick = mnuAboutClick
     end
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.txt'
+    FileName = 'nergalResults'
+    Left = 542
+    Top = 37
   end
 end

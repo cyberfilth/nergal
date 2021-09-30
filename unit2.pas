@@ -39,6 +39,9 @@ var
 
 implementation
 
+uses
+  unit1;
+
 {$R *.lfm}
 
 { TdeetsForm }
@@ -50,17 +53,15 @@ end;
 
 procedure TdeetsForm.FormShow(Sender: TObject);
 var
-  dfileName: shortstring;
   RootNode, dehashedNode: TDOMNode;
   Doc: TXMLDocument;
 begin
   (* Check to see if a config file exists *)
-  if (FileExists('nergalConf.xml') = True) then
+  if (FileExists(unit1.dfilename) = True) then
   begin
     try
-      dfileName := 'nergalConf.xml';
       (* Read in xml file from disk *)
-      ReadXMLFile(Doc, dfileName);
+      ReadXMLFile(Doc, unit1.dfilename);
       (* Retrieve the hunter node *)
       RootNode := Doc.DocumentElement.FindNode('hunter');
       (* Retrieve the Hunter API *)
@@ -85,7 +86,6 @@ procedure TdeetsForm.savebtnClick(Sender: TObject);
 var
   Doc: TXMLDocument;
   RootNode, dataNode: TDOMNode;
-  dfileName: shortstring;
 
   procedure AddElement(Node: TDOMNode; Name, Value: UnicodeString);
   var
@@ -112,7 +112,6 @@ var
   end;
 
 begin
-  dfileName := 'nergalConf.xml';
   try
     { Create a document }
     Doc := TXMLDocument.Create;
@@ -141,7 +140,7 @@ begin
       AddElement(datanode, 'DEHASHEDAPI', 'EMPTY');
 
     (* Save XML file *)
-    WriteXMLFile(Doc, dfileName);
+    WriteXMLFile(Doc, unit1.dfilename);
   finally
     { free memory }
     Doc.Free;

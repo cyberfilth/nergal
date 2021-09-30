@@ -23,6 +23,7 @@ type
     DomainCaption: TLabel;
     domainEdt: TEdit;
     DomainCaption2: TLabel;
+    SaveDialog1: TSaveDialog;
     titleDeHashed: TLabel;
     titleHunter: TLabel;
     MainMenu1: TMainMenu;
@@ -38,6 +39,7 @@ type
     procedure dehashedBtnClick(Sender: TObject);
     procedure exportBtn2Click(Sender: TObject);
     procedure exportBtnClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure hunterBtnClick(Sender: TObject);
     procedure mnuAboutClick(Sender: TObject);
@@ -52,9 +54,10 @@ type
     procedure connectToHunter;
   end;
 
+
 var
   Form1: TForm1;
-  hunterAPI, dehashedAPI, dehashedEmail: string;
+  hunterAPI, dehashedAPI, dehashedEmail, dfilename: string;
 
 implementation
 
@@ -65,7 +68,7 @@ implementation
 procedure TForm1.FormShow(Sender: TObject);
 begin
   (* Check to see if a config file exists *)
-  if (FileExists('nergalConf.xml') = True) then
+  if (FileExists(dfilename) = True) then
     loadConfig
   else
   begin
@@ -157,25 +160,35 @@ begin
     connectToDeHashed;
 end;
 
+(* Export Hunter.io results *)
 procedure TForm1.exportBtn2Click(Sender: TObject);
 begin
-  hunterResults.Lines.SaveToFile('Nergal-HunterResults.txt');
+  if SaveDialog1.Execute then
+    hunterResults.Lines.SaveToFile(SaveDialog1.FileName)
+  else
+    Abort;
 end;
 
 (* Export DeHashed results *)
 procedure TForm1.exportBtnClick(Sender: TObject);
 begin
-  dehashedResults.Lines.SaveToFile('Nergal-DeHashedResults.txt');
+    if SaveDialog1.Execute then
+      dehashedResults.Lines.SaveToFile(SaveDialog1.FileName)
+  else
+    Abort;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  dfilename := getUserDir + '.nergalConf.xml';
 end;
 
 procedure TForm1.loadConfig;
 var
-  dfileName: shortstring;
   RootNode, dehashedNode: TDOMNode;
   Doc: TXMLDocument;
 begin
   try
-    dfileName := 'nergalConf.xml';
     (* Read in xml file from disk *)
     ReadXMLFile(Doc, dfileName);
     (* Retrieve the hunter node *)
@@ -203,7 +216,12 @@ begin
   fullQuery := Concat('https://api.dehashed.com/search?query=username:',
     domainEdt.Text, ' -u ', dehashedEmail, ':', dehashedAPI,
     ' -H ''Accept: application/json''');
+  {$IFDEF Linux}
   if RunCommand('/bin/bash', ['-c', 'curl ' + fullQuery], s) then
+  {$ENDIF}
+  {$IFDEF Darwin}
+  if RunCommand('/usr/bin/curl ' + fullQuery, s) then
+  {$ENDIF}
     try
       J := GetJSON(s);
       x := J.FindPath('total').AsInteger;
